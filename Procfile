@@ -1,1 +1,1 @@
-web: gunicorn python-project-52
+web: gunicorn hexlet-code
