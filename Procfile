@@ -1,1 +1,1 @@
-web: gunicorn hexlet-code
+web: gunicorn task_manager.wsgi --log-file
