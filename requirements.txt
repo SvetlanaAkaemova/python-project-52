@@ -13,7 +13,6 @@ exceptiongroup==1.0.4
 flake8==5.0.4
 Flask==2.2.2
 gunicorn==20.1.0
-hello @ file:///Users/konstantinakaemov/hello
 -e git+ssh://git@github.com/SvetlanaAkaemova/python-project-52.git@eb29a478116845151ce2ae53de3dca53b1446e1d#egg=hexlet_code
 idna==3.4
 iniconfig==1.1.1
