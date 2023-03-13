@@ -80,19 +80,17 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-if not DEBUG:
-    DATABASE_URL = os.getenv('DATABASE_URL')
-
-#    DATABASES = {
-#       'default': {
-#            'ENGINE': 'django.db.backends.sqlite3',
-#            'NAME': BASE_DIR / 'db.sqlite3',
-#        }
-#    }
+DATABASE_URL = os.getenv('DATABASE_URL')
 if DEBUG:
-    DATABASE_URL = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
-
-DATABASES = {'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=1800)}
+    DATABASES = {
+       'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+#    DATABASE_URL = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+else:
+    DATABASES = {'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=1800)}
 
 
 # Password validation
