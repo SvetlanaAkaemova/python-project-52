@@ -7,6 +7,6 @@ from .models import User
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('username', 'created_at')
-    search_fields = ['username', 'full_name']
-    list_filter = (('created_at', DateFieldListFilter),)
+    list_display = ('username', 'last_login')
+    search_fields = ['username']
+    list_filter = (('last_login', DateFieldListFilter),)
