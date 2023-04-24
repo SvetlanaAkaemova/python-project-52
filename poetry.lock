@@ -64,6 +64,22 @@ html5lib = ["html5lib"]
 lxml = ["lxml"]
 
 [[package]]
+name = "crispy-bootstrap4"
+version = "2022.1"
+description = "Bootstrap4 template pack for django-crispy-forms"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "crispy-bootstrap4-2022.1.tar.gz", hash = "sha256:f18386c4d96180c1bb1212487d6e8f5a3dd1a9bb58d3032183973d4d130b55f9"},
+    {file = "crispy_bootstrap4-2022.1-py3-none-any.whl", hash = "sha256:5241ab1dc2188c95560aa786439bcbedec7416e6b0f5a52dded82380810367ec"},
+]
+
+[package.dependencies]
+django = ">=3.2"
+django-crispy-forms = ">=1.14.0"
+
+[[package]]
 name = "dj-database-url"
 version = "1.2.0"
 description = "Use Database URLs in your Django Application."
@@ -291,4 +307,4 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "d66ee1935e46c7ede58c13399384acf228df3c5550489edf46c6996e67b6351a"
+content-hash = "1c7490977af737e321e1e098314b14504fb5e7e315e4ab001954a995ebe75705"
