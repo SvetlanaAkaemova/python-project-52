@@ -1,14 +1,12 @@
 from django import forms
-from django.forms import ModelForm
+# from django.forms import ModelForm
 from .models import User
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.hashers import check_password
-from django.core.exceptions import ValidationError
 
 
 class PlaceholderMixin:
-     def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         field_names = [field_name for field_name, _ in self.fields.items()]
         for field_name in field_names:
@@ -22,4 +20,3 @@ class UserRegisterForm(PlaceholderMixin, UserCreationForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'username', 'password1', 'password2']
-

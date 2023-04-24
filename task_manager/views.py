@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect
-from django.views.decorators.http import require_http_methods
-#from django.views.generic import TemplateView, View
+# from django.views.generic import TemplateView, View
 from django.contrib.auth.views import LoginView
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import logout
 from django.contrib import messages
-from django.contrib.auth.forms import AuthenticationForm
+# from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
+from django.http import HttpResponse
 
 
 def home(request):
@@ -24,16 +24,15 @@ def user_logout(request):
     logout(request)
     messages.info(request, _('You are logged out'))
     return redirect('home')
-    
 
 
 def states(request):
-    return f'states'
+    return HttpResponse('states')
 
 
 def labels(request):
-    return render(request, f'labels')
+    return HttpResponse('labels')
 
 
 def tasks(request):
-    return f'tasks'
+    return HttpResponse('tasks')
