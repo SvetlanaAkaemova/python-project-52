@@ -6,4 +6,8 @@
 
 [![Actions Status](https://github.com/SvetlanaAkaemova/python-project-52/workflows/my_check/badge.svg)](https://github.com/SvetlanaAkaemova/python-project-52/actions)
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/ef1250ca57e17fc02476/maintainability)](https://codeclimate.com/github/SvetlanaAkaemova/python-project-52/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/ef1250ca57e17fc02476/test_coverage)](https://codeclimate.com/github/SvetlanaAkaemova/python-project-52/test_coverage)
+
 ## Link: https://web-production-13b7.up.railway.app

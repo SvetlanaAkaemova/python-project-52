@@ -26,10 +26,6 @@ def user_logout(request):
     return redirect('home')
 
 
-def states(request):
-    return HttpResponse('states')
-
-
 def labels(request):
     return HttpResponse('labels')
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-18 22:45+0200\n"
+"POT-Creation-Date: 2023-04-26 23:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,13 +20,25 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: settings.py:139
+#: settings.py:131
 msgid "English"
 msgstr ""
 
-#: settings.py:140
+#: settings.py:132
 msgid "Russian"
 msgstr ""
+
+#: statuses/views.py:25
+msgid "Status was created successfully"
+msgstr "Статус успешно создан"
+
+#: statuses/views.py:35
+msgid "Status was updated successfully"
+msgstr "Статус успешно изменён"
+
+#: statuses/views.py:43
+msgid "Status was deleted successfully"
+msgstr "Статус успешно удалён"
 
 #: templates/base.html:15
 msgid "Task manager Hexlet"
@@ -41,7 +53,7 @@ msgid "Users"
 msgstr "Пользователи"
 
 #: templates/base.html:62
-msgid "States"
+msgid "Statuses"
 msgstr "Статусы"
 
 #: templates/base.html:65
@@ -80,41 +92,45 @@ msgstr "Узнать больше"
 msgid "Login"
 msgstr "Вход"
 
-#: templates/users/chern.html:1
-msgid "First name"
+#: templates/statuses/create.html:14 templates/statuses/index.html:20
+msgid "Create status"
+msgstr "Создать статус"
+
+#: templates/statuses/create.html:26
+msgid "Create"
+msgstr "Создать"
+
+#: templates/statuses/delete.html:14
+msgid "Deleting status"
+msgstr "Удаление статуса"
+
+#: templates/statuses/delete.html:18 templates/users/delete.html:18
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
+
+#: templates/statuses/delete.html:23 templates/users/delete.html:23
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
+# : templates/statuses/index.html:16
+# msgid "Statuses"
+# msgstr "Статусы"
+
+#: templates/statuses/index.html:25
+msgid "Name"
 msgstr "Имя"
 
-#: templates/users/chern.html:2
-msgid "Last name"
-msgstr "Фамилия"
+#: templates/statuses/index.html:26 templates/users/index.html:26
+msgid "Date of creation"
+msgstr "Дата создания"
 
-#: templates/users/chern.html:3 templates/users/index.html:24
-msgid "Username"
-msgstr "Имя пользователя"
+#: templates/statuses/update.html:14
+msgid "Status update"
+msgstr "Изменение статуса"
 
-#: templates/users/chern.html:4
-msgid ""
-"Obligatory field. No more than 150 characters. Only letters, numbers and "
-"symbols @/./+/-/_."
-msgstr ""
-"Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./"
-"+/-/_."
-
-#: templates/users/chern.html:7 users/forms.py:20
-msgid "Password"
-msgstr "Пароль"
-
-#: templates/users/chern.html:8 users/forms.py:20
-msgid "Your password must contain at least 3 characters."
-msgstr "Ваш пароль должен содержать как минимум 3 символа."
-
-#: templates/users/chern.html:11
-msgid "Password confirmation"
-msgstr "Подтверждение пароля"
-
-#: templates/users/chern.html:12
-msgid "To confirm, please enter the password again."
-msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
+#: templates/statuses/update.html:26 templates/users/update.html:26
+msgid "Update"
+msgstr "Изменить"
 
 #: templates/users/create.html:26
 msgid "Register"
@@ -124,43 +140,39 @@ msgstr "Зарегистрировать"
 msgid "Deleting user"
 msgstr "Удаление пользователя"
 
-#: templates/users/delete.html:18
-msgid "Are you sure you want to delete"
-msgstr "Вы уверены, что хотите удалить"
-
-#: templates/users/delete.html:23
-msgid "Yes, delete"
-msgstr "Да, удалить"
+#: templates/users/index.html:24
+msgid "Username"
+msgstr "Имя пользователя"
 
 #: templates/users/index.html:25
 msgid "Full name"
 msgstr "Полное имя"
 
-#: templates/users/index.html:26
-msgid "Date of creation"
-msgstr "Дата создания"
-
 #: templates/users/update.html:14
 msgid "User update"
 msgstr "Изменение пользователя"
 
-#: templates/users/update.html:26
-msgid "Update"
-msgstr "Изменить"
+#: users/forms.py:18
+msgid "Password"
+msgstr "Пароль"
 
-#: users/views.py:30
+#: users/forms.py:18
+msgid "Your password must contain at least 3 characters."
+msgstr "Ваш пароль должен содержать как минимум 3 символа."
+
+#: users/views.py:25
 msgid "User was registered successfully"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: users/views.py:36 users/views.py:50 users/views.py:59
+#: users/views.py:31 users/views.py:45 users/views.py:54
 msgid "You are not logged in. Please log in."
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
-#: users/views.py:51
+#: users/views.py:46
 msgid "User was updated successfully"
 msgstr "Пользователь успешно изменён"
 
-#: users/views.py:60
+#: users/views.py:55
 msgid "User was deleted successfully"
 msgstr "Пользователь успешно удалён"
 
@@ -171,6 +183,25 @@ msgstr "Вы залогинены"
 #: views.py:25
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "First name"
+#~ msgstr "Имя"
+
+#~ msgid "Last name"
+#~ msgstr "Фамилия"
+
+#~ msgid ""
+#~ "Obligatory field. No more than 150 characters. Only letters, numbers and "
+#~ "symbols @/./+/-/_."
+#~ msgstr ""
+#~ "Обязательное поле. Не более 150 символов. Только буквы, цифры и символы "
+#~ "@/./+/-/_."
+
+#~ msgid "Password confirmation"
+#~ msgstr "Подтверждение пароля"
+
+#~ msgid "To confirm, please enter the password again."
+#~ msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
 
 #~ msgid ""
 #~ "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."

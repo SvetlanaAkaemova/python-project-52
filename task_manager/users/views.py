@@ -37,7 +37,7 @@ class MyMessageMixin(LoginRequiredMixin):
         return super(MyMessageMixin, self).dispatch(request, *args, **kwargs)
 
 
-class UserUpdateView(MyMessageMixin, SuccessMessageMixin, UpdateView):
+class UserUpdateView(MyMessageMixin, LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
     model = User
     template_name = 'users/update.html'

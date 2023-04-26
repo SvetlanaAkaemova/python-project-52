@@ -27,3 +27,7 @@ shell:
 lint:
 	@poetry run flake8 task_manager
 
+test-coverage:
+	@poetry run coverage run manage.py test
+	@poetry run coverage xml
+	@poetry run coverage report

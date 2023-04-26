@@ -16,6 +16,7 @@ django-bootstrap4 = "^22.3"
 whitenoise = "^6.4.0"
 django-crispy-forms = "^2.0"
 crispy-bootstrap4 = "^2022.1"
+pytest-cov = "^4.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
