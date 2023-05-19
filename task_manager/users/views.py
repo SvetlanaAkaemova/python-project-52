@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.views import View
 from django.views.generic import CreateView
@@ -8,7 +8,7 @@ from task_manager.users.forms import UserRegisterForm
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
 class IndexView(View):
@@ -33,24 +33,38 @@ class MyMessageMixin(LoginRequiredMixin):
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             messages.warning(request, self.permission_denied_message)
-            return self.handle_no_permission()
+            return redirect(reverse_lazy('login'))
         return super(MyMessageMixin, self).dispatch(request, *args, **kwargs)
 
 
-class UserUpdateView(MyMessageMixin, LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class UserCheckMixin(MyMessageMixin, UserPassesTestMixin):
+
+    def test_func(self):
+        user = self.get_object()
+        return user.id == self.request.user.id
+
+    def handle_no_permission(self):
+        if self.request.user.is_authenticated:
+            user = self.get_object()
+            if user.id != self.request.user.id:
+                messages.warning(self.request, _('You do not have rights to change another user.'))
+                return redirect(reverse_lazy('users'))
+        else:
+            return redirect(reverse_lazy('users'))
+
+
+class UserUpdateView(UserCheckMixin, SuccessMessageMixin, UpdateView):
 
     model = User
     template_name = 'users/update.html'
     form_class = UserRegisterForm
-    permission_denied_message = _('You are not logged in. Please log in.')
     success_message = _('User was updated successfully')
     success_url = reverse_lazy('users')
 
 
-class UserDeleteView(MyMessageMixin, SuccessMessageMixin, DeleteView):
+class UserDeleteView(UserCheckMixin, SuccessMessageMixin, DeleteView):
 
     model = User
     template_name = 'users/delete.html'
-    permission_denied_message = _('You are not logged in. Please log in.')
     success_message = _('User was deleted successfully')
     success_url = reverse_lazy('users')
