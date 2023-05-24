@@ -38,6 +38,8 @@ class MyMessageMixin(LoginRequiredMixin):
 
 
 class UserCheckMixin(MyMessageMixin, UserPassesTestMixin):
+    message_no_permission = _('You do not have rights to change another user.')
+    unsuccess_url = reverse_lazy('users')
 
     def test_func(self):
         user = self.get_object()
@@ -47,8 +49,8 @@ class UserCheckMixin(MyMessageMixin, UserPassesTestMixin):
         if self.request.user.is_authenticated:
             user = self.get_object()
             if user.id != self.request.user.id:
-                messages.warning(self.request, _('You do not have rights to change another user.'))
-                return redirect(reverse_lazy('users'))
+                messages.warning(self.request, self.message_no_permission)
+                return redirect(self.unsuccess_url)
         else:
             return redirect(reverse_lazy('users'))
 

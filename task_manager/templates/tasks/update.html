@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% load i18n %}
+
+{% block content %}
+
+<div class="container wrapper flex-grow-1">
+
+
+      <h1 class="my-4">
+
+{% trans 'Task update' %}
+
+      </h1>
+
+<form action="{% url 'tasks_update' task.id %}" method="post">
+  {% csrf_token %}
+  <input type="hidden">
+  <div class="form-group">
+    {{ form|crispy }}
+  </div>
+
+  <div class="form-group">
+    <input class="btn btn-primary" type="submit" value="{% trans 'Update' %}">
+  </div>
+</form>
+
+    </div>
+
+{% endblock %}

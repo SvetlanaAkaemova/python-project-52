@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-20 00:01+0200\n"
+"POT-Creation-Date: 2023-05-24 00:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,18 +20,19 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: settings.py:131
+#: settings.py:132
 msgid "English"
 msgstr ""
 
-#: settings.py:132
+#: settings.py:133
 msgid "Russian"
 msgstr ""
 
 # : templates/statuses/index.html:16
 # msgid "Statuses"
 # msgstr "Статусы"
-#: statuses/forms.py:11 templates/statuses/index.html:25
+#: statuses/forms.py:11 tasks/forms.py:12 templates/statuses/index.html:25
+#: templates/tasks/index.html:25
 msgid "Name"
 msgstr "Имя"
 
@@ -46,6 +47,38 @@ msgstr "Статус успешно изменён"
 #: statuses/views.py:41
 msgid "Status was deleted successfully"
 msgstr "Статус успешно удалён"
+
+#: tasks/forms.py:13
+msgid "Description"
+msgstr "Описание"
+
+#: tasks/forms.py:14 templates/tasks/index.html:28
+msgid "Executor"
+msgstr "Исполнитель"
+
+#: tasks/forms.py:15 templates/base.html:65
+msgid "Labels"
+msgstr "Метки"
+
+#: tasks/forms.py:16 templates/tasks/index.html:26
+msgid "Status"
+msgstr "Статус"
+
+#: tasks/views.py:24
+msgid "Task was created successfully"
+msgstr "Задача успешно создана"
+
+#: tasks/views.py:38
+msgid "Task was updated successfully"
+msgstr "Задача успешно изменена"
+
+#: tasks/views.py:45
+msgid "Only the author can delete a task"
+msgstr "Задачу может удалить только её автор"
+
+#: tasks/views.py:48
+msgid "Task was deleted successfully"
+msgstr "Задача успешно удалена"
 
 #: templates/base.html:15
 msgid "Task manager Hexlet"
@@ -63,11 +96,7 @@ msgstr "Пользователи"
 msgid "Statuses"
 msgstr "Статусы"
 
-#: templates/base.html:65
-msgid "Labels"
-msgstr "Метки"
-
-#: templates/base.html:68
+#: templates/base.html:68 templates/tasks/index.html:16
 msgid "Tasks"
 msgstr "Задачи"
 
@@ -103,7 +132,7 @@ msgstr "Вход"
 msgid "Create status"
 msgstr "Создать статус"
 
-#: templates/statuses/create.html:26
+#: templates/statuses/create.html:26 templates/tasks/create.html:26
 msgid "Create"
 msgstr "Создать"
 
@@ -111,15 +140,18 @@ msgstr "Создать"
 msgid "Deleting status"
 msgstr "Удаление статуса"
 
-#: templates/statuses/delete.html:18 templates/users/delete.html:18
+#: templates/statuses/delete.html:18 templates/tasks/delete.html:18
+#: templates/users/delete.html:18
 msgid "Are you sure you want to delete"
 msgstr "Вы уверены, что хотите удалить"
 
-#: templates/statuses/delete.html:23 templates/users/delete.html:23
+#: templates/statuses/delete.html:23 templates/tasks/delete.html:23
+#: templates/users/delete.html:23
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
-#: templates/statuses/index.html:26 templates/users/index.html:26
+#: templates/statuses/index.html:26 templates/tasks/index.html:29
+#: templates/users/index.html:26
 msgid "Date of creation"
 msgstr "Дата создания"
 
@@ -127,9 +159,26 @@ msgstr "Дата создания"
 msgid "Status update"
 msgstr "Изменение статуса"
 
-#: templates/statuses/update.html:26 templates/users/update.html:26
+#: templates/statuses/update.html:26 templates/tasks/update.html:26
+#: templates/users/update.html:26
 msgid "Update"
 msgstr "Изменить"
+
+#: templates/tasks/create.html:14 templates/tasks/index.html:20
+msgid "Create task"
+msgstr "Создать задачу"
+
+#: templates/tasks/delete.html:14
+msgid "Deleting task"
+msgstr "Удаление задачи"
+
+#: templates/tasks/index.html:27
+msgid "Author"
+msgstr "Автор"
+
+#: templates/tasks/update.html:14
+msgid "Task update"
+msgstr "Изменение задачи"
 
 #: templates/users/create.html:26
 msgid "Register"
@@ -167,11 +216,11 @@ msgstr "Пользователь успешно зарегистрирован"
 msgid "You are not logged in. Please log in."
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
-#: users/views.py:50
+#: users/views.py:41
 msgid "You do not have rights to change another user."
 msgstr "У вас нет прав для изменения другого пользователя."
 
-#: users/views.py:62
+#: users/views.py:63
 msgid "User was updated successfully"
 msgstr "Пользователь успешно изменён"
 
