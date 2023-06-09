@@ -35,8 +35,6 @@ DEBUG = os.getenv('DEBUG', 'False')
 AUTH_USER_MODEL = 'users.User'
 
 ALLOWED_HOSTS = [
-    'https://akaemova-svetlana-task-manager.up.railway.app',
-    'http://akaemova-svetlana-task-manager.up.railway.app',
     'akaemova-svetlana-task-manager.up.railway.app',
     '127.0.0.1',
     '0.0.0.0',
@@ -44,7 +42,7 @@ ALLOWED_HOSTS = [
     'web-production-13b7.up.railway.app',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['akaemova-svetlana-task-manager.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://akaemova-svetlana-task-manager.up.railway.app']
 
 # Application definition
 
