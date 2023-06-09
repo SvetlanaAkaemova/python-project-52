@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'task_manager.statuses',
     'task_manager.tasks',
     'task_manager.labels',
+    'rollbar',
 ]
 
 MIDDLEWARE = [
@@ -72,7 +73,18 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
+
+ROLLBAR_KEY = os.getenv('ROLLBAR_KEY')
+
+ROLLBAR = {
+    'access_token': ROLLBAR_KEY,
+    'environment': 'development' if DEBUG else 'production',
+    'code_version': '1.0',
+    'root': BASE_DIR,
+}
+
 
 ROOT_URLCONF = 'task_manager.urls'
 
