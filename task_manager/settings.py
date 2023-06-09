@@ -42,6 +42,7 @@ ALLOWED_HOSTS = [
     'web-production-13b7.up.railway.app',
 ]
 
+CSRF_TRUSTED_ORIGINS = ['akaemova-svetlana-task-manager.up.railway.app']
 
 # Application definition
 
