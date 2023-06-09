@@ -227,6 +227,21 @@ files = [
 django = ">=3.2"
 
 [[package]]
+name = "django-filter"
+version = "23.2"
+description = "Django-filter is a reusable Django application for allowing users to filter querysets dynamically."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "django-filter-23.2.tar.gz", hash = "sha256:2fe15f78108475eda525692813205fa6f9e8c1caf1ae65daa5862d403c6dbf00"},
+    {file = "django_filter-23.2-py3-none-any.whl", hash = "sha256:d12d8e0fc6d3eb26641e553e5d53b191eb8cec611427d4bdce0becb1f7c172b5"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+
+[[package]]
 name = "exceptiongroup"
 version = "1.1.1"
 description = "Backport of PEP 654 (exception groups)"
@@ -514,4 +529,4 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "60a08ef9ce1b6a28ff288e98147fbbe81daba1f95aee3b88d2c5db2203a1afe8"
+content-hash = "89d04349f7fe8fe89c47ba45009399e1d16c27f9a18e54c2292ac3d0d76e69ce"

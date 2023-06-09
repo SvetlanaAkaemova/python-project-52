@@ -17,6 +17,7 @@ whitenoise = "^6.4.0"
 django-crispy-forms = "^2.0"
 crispy-bootstrap4 = "^2022.1"
 pytest-cov = "^4.0.0"
+django-filter = "^23.2"
 
 
 [tool.poetry.group.dev.dependencies]
