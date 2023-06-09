@@ -38,7 +38,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '0.0.0.0',
     'webserver',
-    'akaemova-svetlana-task-manager.up.railway.app',
+    'https://akaemova-svetlana-task-manager.up.railway.app',
     'web-production-13b7.up.railway.app',
 ]
 
