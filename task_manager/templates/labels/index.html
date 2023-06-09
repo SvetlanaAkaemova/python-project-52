@@ -13,11 +13,11 @@
 
       <h1 class="my-4">
         
-{% trans 'Statuses' %}
+{% trans 'Labels' %}
 
       </h1>
       
-<a class="nav-link" href="{% url 'statuses_create' %}">{% trans 'Create status' %}</a>
+<a class="nav-link" href="{% url 'labels_create' %}">{% trans 'Create label' %}</a>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -34,9 +34,9 @@
         <td>{{ object.name }}</td>
         <td>{{ object.timestamp }}</td>
         <td>
-          <a href="{% url 'statuses_update' object.id %}">Изменить</a>
+          <a href="{% url 'labels_update' object.id %}">Изменить</a>
           <br>
-          <a href="{% url 'statuses_delete' object.id %}" rel="nofollow">Удалить</a>
+          <a href="{% url 'labels_delete' object.id %}" rel="nofollow">Удалить</a>
         </td>
     {% endfor %}
     </tr>

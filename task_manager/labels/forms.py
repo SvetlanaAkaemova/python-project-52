@@ -1,10 +1,10 @@
 from django.forms import ModelForm
-from .models import Status
+from .models import Label
 from task_manager.users.forms import PlaceholderMixin
 
 
-class StatusCreateForm(PlaceholderMixin, ModelForm):
+class LabelCreateForm(PlaceholderMixin, ModelForm):
 
     class Meta:
-        model = Status
+        model = Label
         fields = ['name']

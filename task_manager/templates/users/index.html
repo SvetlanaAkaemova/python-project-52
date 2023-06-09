@@ -28,16 +28,16 @@
     </tr>
   </thead>
   <tbody>
-    {% for user in users %}
+    {% for object in object_list %}
     <tr>
-        <td>{{ user.id }}</td>
-        <td>{{ user.username }}</td>
-        <td>{{ user.first_name }} {{ user.last_name }}</td>
-        <td>{{ user.created_at }}</td>
+        <td>{{ object.id }}</td>
+        <td>{{ object.username }}</td>
+        <td>{{ object.first_name }} {{ object.last_name }}</td>
+        <td>{{ object.date_joined }}</td>
         <td>
-          <a href="{% url 'users_update' user.id %}">Изменить</a>
+          <a href="{% url 'users_update' object.id %}">Изменить</a>
           <br>
-          <a href="{% url 'users_delete' user.id %}" rel="nofollow">Удалить</a>
+          <a href="{% url 'users_delete' object.id %}" rel="nofollow">Удалить</a>
         </td>
     {% endfor %}
     </tr>

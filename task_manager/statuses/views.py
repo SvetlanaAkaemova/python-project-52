@@ -1,21 +1,17 @@
-from django.shortcuts import render
-from django.views import View
+from django.views.generic.list import ListView
 from django.views.generic import CreateView
 from django.views.generic.edit import UpdateView, DeleteView
-from .models import Status
-from task_manager.statuses.forms import StatusCreateForm
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 
+from .models import Status
+from task_manager.statuses.forms import StatusCreateForm
 
-class IndexView(View):
 
-    def get(self, request, *args, **kwargs):
-        statuses = Status.objects.all()
-        return render(request, 'statuses/index.html', context={
-            'statuses': statuses,
-        })
+class IndexView(ListView):
+    model = Status
+    template_name = 'statuses/index.html'
 
 
 class StatusCreateView(SuccessMessageMixin, CreateView):

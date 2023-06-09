@@ -7,7 +7,6 @@ from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from django.http import HttpResponse
 
 
 def home(request):
@@ -24,11 +23,3 @@ def user_logout(request):
     logout(request)
     messages.info(request, _('You are logged out'))
     return redirect('home')
-
-
-def labels(request):
-    return HttpResponse('labels')
-
-
-def tasks(request):
-    return HttpResponse('tasks')
