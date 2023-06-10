@@ -13,7 +13,7 @@ from task_manager.labels.models import Label
 from task_manager.tasks.forms import TaskCreateForm
 
 
-class IndexView(FilterView):
+class IndexView(UserCheckMixin, FilterView):
 
     queryset = Task.objects.all()
     context_object_name = 'tasks'
@@ -21,7 +21,7 @@ class IndexView(FilterView):
     filterset_class = TasksFilters
 
 
-class TaskCreateView(SuccessMessageMixin, CreateView):
+class TaskCreateView(UserCheckMixin, SuccessMessageMixin, CreateView):
     form_class = TaskCreateForm
     success_message = _('Task was created successfully')
     success_url = reverse_lazy('tasks')
@@ -32,7 +32,7 @@ class TaskCreateView(SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class TaskDetailView(DetailView):
+class TaskDetailView(UserCheckMixin, DetailView):
     model = Task
     template_name = 'tasks/detail.html'
 
@@ -43,7 +43,7 @@ class TaskDetailView(DetailView):
         return context
 
 
-class TaskUpdateView(SuccessMessageMixin, UpdateView):
+class TaskUpdateView(UserCheckMixin, SuccessMessageMixin, UpdateView):
 
     model = Task
     template_name = 'tasks/update.html'

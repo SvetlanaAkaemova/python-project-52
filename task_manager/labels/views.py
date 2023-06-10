@@ -9,22 +9,23 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import ProtectedError
 
 from .models import Label
+from task_manager.users.views import UserCheckMixin
 from task_manager.labels.forms import LabelCreateForm
 
 
-class IndexView(ListView):
+class IndexView(UserCheckMixin, ListView):
     model = Label
     template_name = 'labels/index.html'
 
 
-class LabelCreateView(SuccessMessageMixin, CreateView):
+class LabelCreateView(UserCheckMixin, SuccessMessageMixin, CreateView):
     form_class = LabelCreateForm
     success_message = _('Label was created successfully')
     success_url = reverse_lazy('labels')
     template_name = 'labels/create.html'
 
 
-class LabelUpdateView(SuccessMessageMixin, UpdateView):
+class LabelUpdateView(UserCheckMixin, SuccessMessageMixin, UpdateView):
 
     model = Label
     template_name = 'labels/update.html'
@@ -33,7 +34,7 @@ class LabelUpdateView(SuccessMessageMixin, UpdateView):
     success_url = reverse_lazy('labels')
 
 
-class LabelDeleteView(SuccessMessageMixin, DeleteView):
+class LabelDeleteView(UserCheckMixin, SuccessMessageMixin, DeleteView):
 
     model = Label
     template_name = 'labels/delete.html'

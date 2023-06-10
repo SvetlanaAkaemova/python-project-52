@@ -6,22 +6,23 @@ from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 
 from .models import Status
+from task_manager.users.views import UserCheckMixin
 from task_manager.statuses.forms import StatusCreateForm
 
 
-class IndexView(ListView):
+class IndexView(UserCheckMixin, ListView):
     model = Status
     template_name = 'statuses/index.html'
 
 
-class StatusCreateView(SuccessMessageMixin, CreateView):
+class StatusCreateView(UserCheckMixin, SuccessMessageMixin, CreateView):
     form_class = StatusCreateForm
     success_message = _('Status was created successfully')
     success_url = reverse_lazy('statuses')
     template_name = 'statuses/create.html'
 
 
-class StatusUpdateView(SuccessMessageMixin, UpdateView):
+class StatusUpdateView(UserCheckMixin, SuccessMessageMixin, UpdateView):
 
     model = Status
     template_name = 'statuses/update.html'
@@ -30,7 +31,7 @@ class StatusUpdateView(SuccessMessageMixin, UpdateView):
     success_url = reverse_lazy('statuses')
 
 
-class StatusDeleteView(SuccessMessageMixin, DeleteView):
+class StatusDeleteView(UserCheckMixin, SuccessMessageMixin, DeleteView):
 
     model = Status
     template_name = 'statuses/delete.html'
