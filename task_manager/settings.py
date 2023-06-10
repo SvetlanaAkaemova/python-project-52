@@ -39,7 +39,6 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '0.0.0.0',
     'webserver',
-    'web-production-13b7.up.railway.app',
 ]
 
 CSRF_TRUSTED_ORIGINS = ['https://akaemova-svetlana-task-manager.up.railway.app']
