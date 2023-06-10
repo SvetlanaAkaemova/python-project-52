@@ -3,6 +3,7 @@ from django.views.generic.edit import UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django_filters.views import FilterView
 
@@ -13,7 +14,7 @@ from task_manager.labels.models import Label
 from task_manager.tasks.forms import TaskCreateForm
 
 
-class IndexView(UserCheckMixin, FilterView):
+class IndexView(LoginRequiredMixin, FilterView):
 
     queryset = Task.objects.all()
     context_object_name = 'tasks'
@@ -21,7 +22,7 @@ class IndexView(UserCheckMixin, FilterView):
     filterset_class = TasksFilters
 
 
-class TaskCreateView(UserCheckMixin, SuccessMessageMixin, CreateView):
+class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = TaskCreateForm
     success_message = _('Task was created successfully')
     success_url = reverse_lazy('tasks')
@@ -32,7 +33,7 @@ class TaskCreateView(UserCheckMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class TaskDetailView(UserCheckMixin, DetailView):
+class TaskDetailView(LoginRequiredMixin, DetailView):
     model = Task
     template_name = 'tasks/detail.html'
 
@@ -43,7 +44,7 @@ class TaskDetailView(UserCheckMixin, DetailView):
         return context
 
 
-class TaskUpdateView(UserCheckMixin, SuccessMessageMixin, UpdateView):
+class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
     model = Task
     template_name = 'tasks/update.html'

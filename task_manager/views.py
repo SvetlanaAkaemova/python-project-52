@@ -16,8 +16,7 @@ class UserLoginView(SuccessMessageMixin, LoginView):
     template_name = 'login.html'
 
 
-class UserLogoutView(SuccessMessageMixin, LogoutView):
-#    success_url = reverse_lazy('home')
+class UserLogoutView(LogoutView):
     template_name = 'logout.html'
 
     def dispatch(self, request, *args, **kwargs):
