@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-10 22:45+0200\n"
+"POT-Creation-Date: 2023-06-11 00:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,19 +29,19 @@ msgstr ""
 msgid "Name"
 msgstr "Имя"
 
-#: labels/views.py:22
+#: labels/views.py:24
 msgid "Label was created successfully"
 msgstr "Метка успешно создана"
 
-#: labels/views.py:32
+#: labels/views.py:34
 msgid "Label was updated successfully"
 msgstr "Метка успешно изменена"
 
-#: labels/views.py:40
+#: labels/views.py:42
 msgid "Can not delete label because it is in use"
 msgstr "Невозможно удалить метку, потому что она используется"
 
-#: labels/views.py:41
+#: labels/views.py:43
 msgid "Label was deleted successfully"
 msgstr "Метка успешно удалена"
 
@@ -53,15 +53,19 @@ msgstr ""
 msgid "Russian"
 msgstr ""
 
-#: statuses/views.py:19
+#: statuses/views.py:23
 msgid "Status was created successfully"
 msgstr "Статус успешно создан"
 
-#: statuses/views.py:29
+#: statuses/views.py:33
 msgid "Status was updated successfully"
 msgstr "Статус успешно изменён"
 
-#: statuses/views.py:37
+#: statuses/views.py:41
+msgid "Can not delete status because it is in use"
+msgstr "Невозможно удалить статус, потому что он используется"
+
+#: statuses/views.py:42
 msgid "Status was deleted successfully"
 msgstr "Статус успешно удалён"
 
@@ -97,19 +101,19 @@ msgstr "Статус"
 msgid "Label"
 msgstr "Метка"
 
-#: tasks/views.py:26
+#: tasks/views.py:27
 msgid "Task was created successfully"
 msgstr "Задача успешно создана"
 
-#: tasks/views.py:51
+#: tasks/views.py:52
 msgid "Task was updated successfully"
 msgstr "Задача успешно изменена"
 
-#: tasks/views.py:58
+#: tasks/views.py:59
 msgid "Only the author can delete a task"
 msgstr "Задачу может удалить только её автор"
 
-#: tasks/views.py:61
+#: tasks/views.py:62
 msgid "Task was deleted successfully"
 msgstr "Задача успешно удалена"
 
@@ -283,11 +287,11 @@ msgstr "Пользователь успешно удалён"
 msgid "Unable to delete user because it is in use"
 msgstr "Невозможно удалить пользователя, потому что он используется"
 
-#: views.py:15
+#: views.py:14
 msgid "You are logged in"
 msgstr "Вы залогинены"
 
-#: views.py:22
+#: views.py:24
 msgid "You are logged out"
 msgstr "Вы разлогинены"
 
