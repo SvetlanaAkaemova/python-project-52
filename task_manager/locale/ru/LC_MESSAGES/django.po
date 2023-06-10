@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-07 18:12+0200\n"
+"POT-Creation-Date: 2023-06-10 22:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,39 +29,39 @@ msgstr ""
 msgid "Name"
 msgstr "Имя"
 
-#: labels/views.py:27
+#: labels/views.py:22
 msgid "Label was created successfully"
 msgstr "Метка успешно создана"
 
-#: labels/views.py:37
+#: labels/views.py:32
 msgid "Label was updated successfully"
 msgstr "Метка успешно изменена"
 
-#: labels/views.py:45
+#: labels/views.py:40
 msgid "Can not delete label because it is in use"
 msgstr "Невозможно удалить метку, потому что она используется"
 
-#: labels/views.py:46
+#: labels/views.py:41
 msgid "Label was deleted successfully"
 msgstr "Метка успешно удалена"
 
-#: settings.py:134
+#: settings.py:149
 msgid "English"
 msgstr ""
 
-#: settings.py:135
+#: settings.py:150
 msgid "Russian"
 msgstr ""
 
-#: statuses/views.py:23
+#: statuses/views.py:19
 msgid "Status was created successfully"
 msgstr "Статус успешно создан"
 
-#: statuses/views.py:33
+#: statuses/views.py:29
 msgid "Status was updated successfully"
 msgstr "Статус успешно изменён"
 
-#: statuses/views.py:41
+#: statuses/views.py:37
 msgid "Status was deleted successfully"
 msgstr "Статус успешно удалён"
 
@@ -97,19 +97,19 @@ msgstr "Статус"
 msgid "Label"
 msgstr "Метка"
 
-#: tasks/views.py:27
+#: tasks/views.py:26
 msgid "Task was created successfully"
 msgstr "Задача успешно создана"
 
-#: tasks/views.py:52
+#: tasks/views.py:51
 msgid "Task was updated successfully"
 msgstr "Задача успешно изменена"
 
-#: tasks/views.py:59
+#: tasks/views.py:58
 msgid "Only the author can delete a task"
 msgstr "Задачу может удалить только её автор"
 
-#: tasks/views.py:62
+#: tasks/views.py:61
 msgid "Task was deleted successfully"
 msgstr "Задача успешно удалена"
 
@@ -134,11 +134,11 @@ msgid "Tasks"
 msgstr "Задачи"
 
 #: templates/base.html:86
-msgid "Log out"
+msgid "Logout"
 msgstr "Выход"
 
-#: templates/base.html:95 templates/login.html:26
-msgid "Log in"
+#: templates/base.html:95 templates/login.html:14
+msgid "Login"
 msgstr "Вход"
 
 #: templates/base.html:98 templates/users/create.html:14
@@ -195,8 +195,8 @@ msgstr "Изменение метки"
 msgid "Update"
 msgstr "Изменить"
 
-#: templates/login.html:14
-msgid "Login"
+#: templates/login.html:26
+msgid "Log in"
 msgstr "Вход"
 
 #: templates/statuses/create.html:14 templates/statuses/index.html:20
@@ -251,45 +251,48 @@ msgstr "Полное имя"
 msgid "User update"
 msgstr "Изменение пользователя"
 
-#: users/forms.py:18
+#: users/forms.py:17
 msgid "Password"
 msgstr "Пароль"
 
-#: users/forms.py:18
+#: users/forms.py:17
 msgid "Your password must contain at least 3 characters."
 msgstr "Ваш пароль должен содержать как минимум 3 символа."
 
-#: users/views.py:26
+#: users/views.py:23
 msgid "User was registered successfully"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: users/views.py:32
+#: users/views.py:29
 msgid "You are not logged in. Please log in."
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
-#: users/views.py:42
-msgid "You do not have rights to change another user."
-msgstr "У вас нет прав для изменения другого пользователя."
-
-#: users/views.py:64
+#: users/views.py:57
 msgid "User was updated successfully"
 msgstr "Пользователь успешно изменён"
 
-#: users/views.py:72
+#: users/views.py:58 users/views.py:68
+msgid "You do not have rights to change another user."
+msgstr "У вас нет прав для изменения другого пользователя."
+
+#: users/views.py:66
 msgid "User was deleted successfully"
 msgstr "Пользователь успешно удалён"
 
-#: users/views.py:74
+#: users/views.py:69
 msgid "Unable to delete user because it is in use"
 msgstr "Невозможно удалить пользователя, потому что он используется"
 
-#: views.py:17
+#: views.py:15
 msgid "You are logged in"
 msgstr "Вы залогинены"
 
-#: views.py:24
+#: views.py:22
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "Log out"
+#~ msgstr "Выход"
 
 #~ msgid "First name"
 #~ msgstr "Имя"
