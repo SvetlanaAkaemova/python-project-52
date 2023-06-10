@@ -273,7 +273,7 @@ msgstr "Вы не авторизованы! Пожалуйста, выполни
 
 #: users/views.py:57
 msgid "User was updated successfully"
-msgstr "Пользователь успешно изменён"
+msgstr "Пользователь успешно изменен"
 
 #: users/views.py:58 users/views.py:68
 msgid "You do not have rights to change another user."
