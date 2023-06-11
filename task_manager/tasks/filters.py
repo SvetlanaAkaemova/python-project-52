@@ -6,7 +6,12 @@ from .models import Task
 
 
 class TasksFilters(django_filters.FilterSet):
-    self_tasks = django_filters.BooleanFilter(field_name='self_tasks', method='get_self_tasks', widget=forms.CheckboxInput, label=_('Only your tasks'))
+    self_tasks = django_filters.BooleanFilter(
+        field_name='self_tasks',
+        method='get_self_tasks',
+        widget=forms.CheckboxInput,
+        label=_('Only your tasks')
+    )
     labels = django_filters.ModelChoiceFilter(queryset=Label.objects.all())
 
     class Meta:

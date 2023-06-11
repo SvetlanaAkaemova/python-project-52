@@ -14,7 +14,11 @@ class PlaceholderMixin:
 
 
 class UserRegisterForm(PlaceholderMixin, UserCreationForm):
-    password1 = forms.CharField(label=_('Password'), widget=forms.PasswordInput(attrs={'placeholder': _(u'Password')}), help_text=_('Your password must contain at least 3 characters.'))
+    password1 = forms.CharField(
+        label=_('Password'),
+        widget=forms.PasswordInput(attrs={'placeholder': _(u'Password')}),
+        help_text=_('Your password must contain at least 3 characters.')
+    )
 
     class Meta:
         model = User
