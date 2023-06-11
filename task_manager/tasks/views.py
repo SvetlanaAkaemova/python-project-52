@@ -1,13 +1,14 @@
+from django.shortcuts import redirect
+from django.contrib import messages
 from django.views.generic import CreateView
 from django.views.generic.edit import UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django_filters.views import FilterView
 
-from task_manager.users.views import UserCheckMixin
 from .filters import TasksFilters
 from .models import Task
 from task_manager.labels.models import Label
@@ -53,11 +54,21 @@ class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_url = reverse_lazy('tasks')
 
 
-class TaskDeleteView(UserCheckMixin, SuccessMessageMixin, DeleteView):
+class TaskDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
 
     model = Task
     message_no_permission = _('Only the author can delete a task')
-    unsuccess_url = reverse_lazy('tasks')
     template_name = 'tasks/delete.html'
     success_message = _('Task was deleted successfully')
     success_url = reverse_lazy('tasks')
+
+    def test_func(self):
+        task = self.get_object()
+        return task.creator == self.request.user
+
+    def handle_no_permission(self):
+        if self.request.user.is_authenticated:
+            task = self.get_object()
+            if task.creator != self.request.user:
+                messages.warning(self.request, self.message_no_permission)
+        return redirect(self.success_url)
