@@ -15,7 +15,7 @@ def test_status_create(client, authenticated_user, status_data):
 
 
 @pytest.mark.django_db
-def test_status_update(client, test_status, status_data):
+def test_status_update(client, authenticated_user, test_status, status_data):
     update_url = reverse('statuses_update', args=[test_status.pk])
     response = client.get(update_url)
     assert response.status_code == 200
@@ -27,7 +27,7 @@ def test_status_update(client, test_status, status_data):
 
 
 @pytest.mark.django_db
-def test_status_delete(client, test_status):
+def test_status_delete(client, authenticated_user, test_status):
     delete_url = reverse('statuses_delete', args=[test_status.pk])
     response = client.get(delete_url)
     assert response.status_code == 200
