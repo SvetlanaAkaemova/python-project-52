@@ -89,7 +89,7 @@ def executor_for_task():
 
 
 @pytest.fixture
-def task(db, test_user, executor_for_task):
+def test_task(db, test_user, executor_for_task):
     task = Task.objects.create(
         name='Task1',
         description='My test task',
@@ -97,5 +97,5 @@ def task(db, test_user, executor_for_task):
         executor=executor_for_task,
         status=Status.objects.create(name='Status1'),
     )
-    task.tasksandlabels.set([Label.objects.create(name='Label1')])
+    task.labels.set([Label.objects.create(name='Label1')])
     return task

@@ -14,6 +14,15 @@ def test_label_create(client, authenticated_user, label_data):
     assert Label.objects.filter(name=label_data['name']).exists()
 
 
+@pytest.mark.parametrize('param', ['labels', 'labels_create'])
+@pytest.mark.django_db
+def test_label_no_authenticate(client, param):
+    url = reverse(param)
+    response = client.get(url)
+    assert response.status_code == 302
+    assert response.url == reverse('login')
+
+
 @pytest.mark.django_db
 def test_label_update(client, authenticated_user, test_label, label_data):
     update_url = reverse('labels_update', args=[test_label.pk])
@@ -37,9 +46,9 @@ def test_label_delete(client, authenticated_user, test_label):
     assert Label.objects.filter(pk=test_label.pk).count() == 0
 
 
-# @pytest.mark.django_db
-# def test_label_delete_in_use(client, authenticated_user, task):
-#    delete_url = reverse('labels_delete', args=[1])
-#    response = client.post(delete_url, follow=True)
-#    assert response.status_code == 200
-#    assert Label.objects.filter(pk=1).exists()
+@pytest.mark.django_db
+def test_label_delete_in_use(client, authenticated_user, test_task):
+    delete_url = reverse('labels_delete', args=[1])
+    response = client.post(delete_url, follow=True)
+    assert response.status_code == 200
+    assert Label.objects.filter(pk=1).exists()

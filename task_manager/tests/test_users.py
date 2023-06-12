@@ -66,3 +66,14 @@ def test_delete_another_user(client, authenticated_user):
     response = client.get(delete_url)
     assert response.status_code == 302
     assert response.url == reverse('users')
+
+
+@pytest.mark.django_db
+def test_delete_user_has_task(client, authenticated_user, test_task):
+    delete_url = reverse('users_delete', args=[authenticated_user.pk])
+    response = client.get(delete_url, follow=True)
+    assert response.status_code == 200
+
+    post_response = client.post(delete_url, follow=True)
+    assert post_response.status_code == 200
+    assert User.objects.filter(pk=authenticated_user.pk).exists()

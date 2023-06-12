@@ -5,28 +5,27 @@ from django.views.generic import CreateView
 from django.views.generic.edit import UpdateView, DeleteView
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import ProtectedError
 
 from .models import Label
-# from task_manager.users.views import UserCheckMixin
+from task_manager.users.views import MyMessageMixin
 from task_manager.labels.forms import LabelCreateForm
 
 
-class IndexView(LoginRequiredMixin, ListView):
+class IndexView(MyMessageMixin, ListView):
     model = Label
     template_name = 'labels/index.html'
 
 
-class LabelCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class LabelCreateView(MyMessageMixin, SuccessMessageMixin, CreateView):
     form_class = LabelCreateForm
     success_message = _('Label was created successfully')
     success_url = reverse_lazy('labels')
     template_name = 'labels/create.html'
 
 
-class LabelUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class LabelUpdateView(MyMessageMixin, SuccessMessageMixin, UpdateView):
 
     model = Label
     template_name = 'labels/update.html'
@@ -35,7 +34,7 @@ class LabelUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_url = reverse_lazy('labels')
 
 
-class LabelDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class LabelDeleteView(MyMessageMixin, SuccessMessageMixin, DeleteView):
 
     model = Label
     template_name = 'labels/delete.html'

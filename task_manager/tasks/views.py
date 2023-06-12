@@ -5,7 +5,7 @@ from django.views.generic.edit import UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django_filters.views import FilterView
 
@@ -13,9 +13,10 @@ from .filters import TasksFilters
 from .models import Task
 from task_manager.labels.models import Label
 from task_manager.tasks.forms import TaskCreateForm
+from task_manager.users.views import MyMessageMixin
 
 
-class IndexView(LoginRequiredMixin, FilterView):
+class IndexView(MyMessageMixin, FilterView):
 
     queryset = Task.objects.all()
     context_object_name = 'tasks'
@@ -23,7 +24,7 @@ class IndexView(LoginRequiredMixin, FilterView):
     filterset_class = TasksFilters
 
 
-class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class TaskCreateView(MyMessageMixin, SuccessMessageMixin, CreateView):
     form_class = TaskCreateForm
     success_message = _('Task was created successfully')
     success_url = reverse_lazy('tasks')
@@ -34,7 +35,7 @@ class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class TaskDetailView(LoginRequiredMixin, DetailView):
+class TaskDetailView(MyMessageMixin, DetailView):
     model = Task
     template_name = 'tasks/detail.html'
 
@@ -45,7 +46,7 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
         return context
 
 
-class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class TaskUpdateView(MyMessageMixin, SuccessMessageMixin, UpdateView):
 
     model = Task
     template_name = 'tasks/update.html'
@@ -54,7 +55,7 @@ class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_url = reverse_lazy('tasks')
 
 
-class TaskDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
+class TaskDeleteView(MyMessageMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
 
     model = Task
     message_no_permission = _('Only the author can delete a task')

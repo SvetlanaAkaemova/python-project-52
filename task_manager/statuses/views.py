@@ -5,27 +5,27 @@ from django.views.generic import CreateView
 from django.views.generic.edit import UpdateView, DeleteView
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import ProtectedError
 
 from .models import Status
 from task_manager.statuses.forms import StatusCreateForm
+from task_manager.users.views import MyMessageMixin
 
 
-class IndexView(LoginRequiredMixin, ListView):
+class IndexView(MyMessageMixin, ListView):
     model = Status
     template_name = 'statuses/index.html'
 
 
-class StatusCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class StatusCreateView(MyMessageMixin, SuccessMessageMixin, CreateView):
     form_class = StatusCreateForm
     success_message = _('Status was created successfully')
     success_url = reverse_lazy('statuses')
     template_name = 'statuses/create.html'
 
 
-class StatusUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class StatusUpdateView(MyMessageMixin, SuccessMessageMixin, UpdateView):
 
     model = Status
     template_name = 'statuses/update.html'
@@ -34,7 +34,7 @@ class StatusUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_url = reverse_lazy('statuses')
 
 
-class StatusDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class StatusDeleteView(MyMessageMixin, SuccessMessageMixin, DeleteView):
 
     model = Status
     template_name = 'statuses/delete.html'
