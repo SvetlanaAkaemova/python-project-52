@@ -11,14 +11,15 @@
 
       <h1 class="my-4">
 
-{% trans 'Deleting user' %}
+ {{ title }} 
 
       </h1>
 
-<p>{% trans 'Are you sure you want to delete' %} {{ user.first_name }} {{user.last_name }}?</p>
+<p>{% trans 'Are you sure you want to delete' %} {{ name }}?</p>
 
-<form action="{% url 'users_delete' user.id %}" method="post">
+<form action="{{ delete_url }}"  method="post">
   {% csrf_token %}
+
   <input type="hidden">
   <input class="btn btn-danger" type="submit" value="{% trans 'Yes, delete' %}">
 </form>

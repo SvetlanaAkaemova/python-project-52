@@ -1,4 +1,4 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect, reverse
 from django.contrib import messages
 from django.views.generic.list import ListView
 from django.views.generic import CreateView
@@ -62,7 +62,7 @@ class UserUpdateView(UserCheckMixin, SuccessMessageMixin, UpdateView):
 class UserDeleteView(UserCheckMixin, SuccessMessageMixin, DeleteView):
 
     model = User
-    template_name = 'users/delete.html'
+    template_name = 'delete.html'
     success_message = _('User was deleted successfully')
     success_url = reverse_lazy('users')
     message_no_permission = _('You do not have rights to change another user.')
@@ -77,3 +77,13 @@ class UserDeleteView(UserCheckMixin, SuccessMessageMixin, DeleteView):
             messages.warning(self.request, self.message_no_deletion)
         finally:
             return redirect(success_url)
+
+    def get_context_data(self, **kwargs):
+        user = self.get_object()
+        context = super(UserDeleteView, self).get_context_data(**kwargs)
+        context = {
+            'title': _('Deleting user'),
+            'name': user.get_full_name(),
+            'delete_url': reverse('users_delete', args=[user.id]),
+        }
+        return context

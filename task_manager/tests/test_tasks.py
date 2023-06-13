@@ -5,7 +5,13 @@ from task_manager.users.models import User
 
 
 @pytest.mark.django_db
-def test_task_create(client, authenticated_user, executor_for_task, task_data, test_status, test_label):
+def test_task_create(
+        client,
+        authenticated_user,
+        executor_for_task,
+        task_data,
+        test_status,
+        test_label):
     url = reverse('tasks_create')
     response = client.get(url)
     assert response.status_code == 200

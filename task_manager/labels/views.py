@@ -1,4 +1,4 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect, reverse
 from django.contrib import messages
 from django.views.generic.list import ListView
 from django.views.generic import CreateView
@@ -37,7 +37,7 @@ class LabelUpdateView(MyMessageMixin, SuccessMessageMixin, UpdateView):
 class LabelDeleteView(MyMessageMixin, SuccessMessageMixin, DeleteView):
 
     model = Label
-    template_name = 'labels/delete.html'
+    template_name = 'delete.html'
     message_no_permission = _('Can not delete label because it is in use')
     success_message = _('Label was deleted successfully')
     success_url = reverse_lazy('labels')
@@ -51,3 +51,13 @@ class LabelDeleteView(MyMessageMixin, SuccessMessageMixin, DeleteView):
             messages.warning(self.request, self.message_no_permission)
         finally:
             return redirect(success_url)
+
+    def get_context_data(self, **kwargs):
+        label = self.get_object()
+        context = super(LabelDeleteView, self).get_context_data(**kwargs)
+        context = {
+            'title': _('Deleting label'),
+            'name': label.name,
+            'delete_url': reverse('labels_delete', args=[label.id]),
+        }
+        return context

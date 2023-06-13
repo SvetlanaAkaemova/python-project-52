@@ -1,4 +1,4 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect, reverse
 from django.contrib import messages
 from django.views.generic.list import ListView
 from django.views.generic import CreateView
@@ -37,7 +37,7 @@ class StatusUpdateView(MyMessageMixin, SuccessMessageMixin, UpdateView):
 class StatusDeleteView(MyMessageMixin, SuccessMessageMixin, DeleteView):
 
     model = Status
-    template_name = 'statuses/delete.html'
+    template_name = 'delete.html'
     message_no_permission = _('Can not delete status because it is in use')
     success_message = _('Status was deleted successfully')
     success_url = reverse_lazy('statuses')
@@ -51,3 +51,13 @@ class StatusDeleteView(MyMessageMixin, SuccessMessageMixin, DeleteView):
             messages.warning(self.request, self.message_no_permission)
         finally:
             return redirect(success_url)
+
+    def get_context_data(self, **kwargs):
+        status = self.get_object()
+        context = super(StatusDeleteView, self).get_context_data(**kwargs)
+        context = {
+            'title': _('Deleting status'),
+            'name': status.name,
+            'delete_url': reverse('statuses_delete', args=[status.id]),
+        }
+        return context

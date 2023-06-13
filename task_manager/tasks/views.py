@@ -1,4 +1,4 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect, reverse
 from django.contrib import messages
 from django.views.generic import CreateView
 from django.views.generic.edit import UpdateView, DeleteView
@@ -59,7 +59,7 @@ class TaskDeleteView(MyMessageMixin, UserPassesTestMixin, SuccessMessageMixin, D
 
     model = Task
     message_no_permission = _('Only the author can delete a task')
-    template_name = 'tasks/delete.html'
+    template_name = 'delete.html'
     success_message = _('Task was deleted successfully')
     success_url = reverse_lazy('tasks')
 
@@ -73,3 +73,13 @@ class TaskDeleteView(MyMessageMixin, UserPassesTestMixin, SuccessMessageMixin, D
             if task.creator != self.request.user:
                 messages.warning(self.request, self.message_no_permission)
         return redirect(self.success_url)
+
+    def get_context_data(self, **kwargs):
+        task = self.get_object()
+        context = super(TaskDeleteView, self).get_context_data(**kwargs)
+        context = {
+            'title': _('Deleting task'),
+            'name': task.name,
+            'delete_url': reverse('tasks_delete', args=[task.id]),
+        }
+        return context
