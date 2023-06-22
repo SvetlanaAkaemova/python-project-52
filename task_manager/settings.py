@@ -77,16 +77,6 @@ MIDDLEWARE = [
     'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
-ROLLBAR_KEY = os.getenv('ROLLBAR_KEY')
-
-ROLLBAR = {
-    'access_token': ROLLBAR_KEY,
-    'environment': 'development' if DEBUG else 'production',
-    'code_version': '1.0',
-    'root': BASE_DIR,
-}
-
-
 ROOT_URLCONF = 'task_manager.urls'
 
 TEMPLATES = [
@@ -117,7 +107,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-# DATABASE_URL_DEV = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
 db_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_env)
@@ -174,3 +163,15 @@ LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGIN_URL = reverse_lazy('login')
 LOGOUT_URL = reverse_lazy('logout')
 LOGOUT_REDIRECT_URL = reverse_lazy('home')
+
+# Rollbar
+# https://rollbar.com
+
+ROLLBAR_KEY = os.getenv('ROLLBAR_KEY')
+
+ROLLBAR = {
+    'access_token': ROLLBAR_KEY,
+    'environment': 'development' if DEBUG else 'production',
+    'code_version': '1.0',
+    'root': BASE_DIR,
+}
