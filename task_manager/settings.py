@@ -35,7 +35,7 @@ DEBUG = os.getenv('DEBUG', 'False')
 AUTH_USER_MODEL = 'users.User'
 
 ALLOWED_HOSTS = [
-    'akaemova-svetlana-task-manager.up.railway.app',
+    'task-manager-faux.onrender.com',
     '127.0.0.1',
     '0.0.0.0',
     'webserver',
