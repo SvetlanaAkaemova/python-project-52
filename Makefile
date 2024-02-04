@@ -8,7 +8,7 @@ test:
 setup: db-clean install migrate
 
 .PHONY: install
-install:
+install: .env
 	@poetry install
 
 .PHONY: db-clean
