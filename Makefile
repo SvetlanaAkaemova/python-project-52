@@ -15,9 +15,16 @@ install:
 db-clean:
 	@rm db.sqlite3 || true
 
+.PHONY: make-migration
+make-migration:
+	@$(MANAGE) makemigrations
+
 .PHONY: migrate
-migrate:
+migrate: make-migration
 	@$(MANAGE) migrate
+
+.PHONY: build
+build: install migrate
 
 .PHONY: shell
 shell:
