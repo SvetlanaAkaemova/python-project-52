@@ -22,8 +22,7 @@ migrate: make-migration
 	@$(MANAGE) migrate
 
 .PHONY: build
-build:
-	install migrate
+build: install migrate
 
 .PHONY: shell
 shell:
