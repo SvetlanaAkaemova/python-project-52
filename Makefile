@@ -9,17 +9,15 @@ setup: db-clean install migrate
 
 .PHONY: install
 install:
-	@poetry install
+	poetry install
 
 .PHONY: db-clean
 db-clean:
 	@rm db.sqlite3 || true
 
-.PHONY: make-migration
 make-migration:
 	@$(MANAGE) makemigrations
 
-.PHONY: migrate
 migrate: make-migration
 	@$(MANAGE) migrate
 
