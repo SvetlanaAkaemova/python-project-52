@@ -8,7 +8,7 @@ test:
 setup: db-clean install migrate
 
 .PHONY: install
-install:
+install: .env
 	@poetry install
 
 .PHONY: db-clean
@@ -22,7 +22,8 @@ migrate: make-migration
 	@$(MANAGE) migrate
 
 .PHONY: build
-build: migrate
+build: install
+	migrate
 
 .PHONY: shell
 shell:
