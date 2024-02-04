@@ -26,4 +26,4 @@ The application allows a registered user to create, edit and delete tasks, as we
 - Bootstrap4
 - PostgreSQL
 
-Project demo link: https://akaemova-svetlana-task-manager.up.railway.app
+Project demo link: https://task-manager-faux.onrender.com
